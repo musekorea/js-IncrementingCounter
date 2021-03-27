@@ -1,0 +1,22 @@
+const counters = document.querySelectorAll('.counter');
+
+counters.forEach((counter) => {
+  counter.innerText = 0;
+  console.log('forEach');
+
+  function updateCounter() {
+    console.log('function');
+    const target = Number(counter.dataset.target); //목표숫자
+    console.log(target);
+    const c = +counter.innerText; //0부터 더해질 숫자
+    const increment = target / 100; //증가비율
+
+    if (c < target) {
+      console.log('if');
+      counter.innerText = `${Math.ceil(c + increment)}`;
+      setTimeout(updateCounter, 10);
+    }
+  }
+  updateCounter();
+  console.log('out');
+});
